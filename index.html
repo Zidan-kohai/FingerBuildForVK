@@ -119,17 +119,19 @@
                               'PlayerData'
                             ]})
                             .then((data) => { 
-                              if (data.keys[0].value !== null && data.keys[0].value != '')
+                              if(data.keys)
                               {
-                                myGameInstance.SendMessage('Init', 'SetPlayerData', data.keys[0].value);
-                              }
-                              else
-                              {
-                                  console.log("First load");
-                                  myGameInstance.SendMessage('Init', 'FirstLoadVK');
-                              }
-                                 
-                            });
+                                if (data.keys[0].value !== null && data.keys[0].value != '')
+                                {
+                                  myGameInstance.SendMessage('Init', 'SetPlayerData', data.keys[0].value);
+                                }
+                                else
+                                {
+                                    console.log("First load");
+                                    myGameInstance.SendMessage('Init', 'FirstLoadVK');
+                                }
+                              }  
+                            })
                             .catch((error) => {
                               // Ошибка
                               console.log(error);
