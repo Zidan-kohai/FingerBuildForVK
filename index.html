@@ -106,12 +106,12 @@
                       }).then((unityInstance) => {
                             myGameInstance = unityInstance;
                             vkBridge.subscribe((e) => {
-                                    if (e.detail.type === 'VKWebAppViewHide') {
+                                    /*if (e.detail.type === 'VKWebAppViewHide') {
                                       myGameInstance.SendMessage('Init', 'StopMusAndGame'); 
                                     }
                                     if (e.detail.type === 'VKWebAppViewRestore') {
                                       myGameInstance.SendMessage('Init', 'ResumeMusAndGame');  
-                                    }
+                                    }*/
                             });
                             vkBridge.send('VKWebAppStorageGet', {
                             keys: [
