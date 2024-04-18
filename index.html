@@ -100,11 +100,19 @@
 
       script.onload = () => {
 
+      vkBridge.send("VKWebAppInit", {});
         createUnityInstance(canvas, config, (progress) => {
                           progressBarFull.style.width = 100 * progress + "%";
                       }).then((unityInstance) => {
                             myGameInstance = unityInstance;
-                            vkBridge.send("VKWebAppInit", {});
+                            vkBridge.subscribe((e) => {
+                                if (e.detail.type === 'VKWebAppViewHide') {
+                                  myGameInstance.SendMessage('Init', 'StopMusAndGame'); 
+                                }
+                                if (e.detail.type === 'VKWebAppViewRestore') {
+                                  myGameInstance.SendMessage('Init', 'ResumeMusAndGame');  
+                                }
+                            });
                             vkBridge.send('VKWebAppStorageGet', {
                             keys: [
                               //массив названий ключей, значения которых хотим получить
