@@ -119,26 +119,17 @@
                               'PlayerData'
                             ]})
                             .then((data) => { 
-<<<<<<< Updated upstream
-                              if (data.keys) 
-                              {
-                                  if (data.keys[0].value !== null && data.keys[0].value != '')
-=======
                               if (data.keys[0].value !== null && data.keys[0].value != '')
->>>>>>> Stashed changes
-                                  {
-                                      myGameInstance.SendMessage('Init', 'SetPlayerData', data.keys[0].value);
-                                  }
-                                  else
-                                  {
-                                    console.log("First load");
-                                    myGameInstance.SendMessage('Init', 'FirstLoadVK');
-<<<<<<< Updated upstream
-                                  }
-=======
->>>>>>> Stashed changes
+                              {
+                                myGameInstance.SendMessage('Init', 'SetPlayerData', data.keys[0].value);
                               }
-                            })
+                              else
+                              {
+                                  console.log("First load");
+                                  myGameInstance.SendMessage('Init', 'FirstLoadVK');
+                              }
+                                 
+                            });
                             .catch((error) => {
                               // Ошибка
                               console.log(error);
