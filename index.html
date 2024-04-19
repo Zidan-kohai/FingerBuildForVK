@@ -143,6 +143,9 @@
                             {
                               myGameInstance.SendMessage('Init', 'ItIsMobile');
                             }   
+
+                            myGameInstance.SendMessage('Init','AfterPlatformChange');
+
                             }).catch((message) => {
                           alert(message);
                         });
